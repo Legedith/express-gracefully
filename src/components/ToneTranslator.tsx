@@ -85,11 +85,11 @@ const ToneTranslator = () => {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Sparkles className="w-8 h-8 text-primary" />
-            <h1 className="text-4xl lg:text-6xl font-bold neon-text">
+            <h1 className="text-4xl lg:text-6xl font-bold text-white">
               Professional Tone Translator
             </h1>
           </div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Transform your frustrated thoughts into polished, professional communication 
             that you can share with confidence.
           </p>
