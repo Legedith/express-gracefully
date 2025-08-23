@@ -2,41 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic Professional Tone Translator Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Futuristic Dark Theme */
+    --background: 220 25% 5%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glass Cards */
+    --card: 220 25% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Cyan Primary */
+    --primary: 194 100% 60%;
+    --primary-foreground: 220 25% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary Glass */
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Glass */
+    --muted: 220 25% 10%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent Neon */
+    --accent: 194 100% 60%;
+    --accent-foreground: 220 25% 5%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Destructive Red */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Glass Borders */
+    --border: 220 25% 15%;
+    --input: 220 25% 12%;
+    --ring: 194 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(220 25% 5%), hsl(220 30% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(220 25% 8% / 0.6), hsl(220 25% 12% / 0.4));
+    --gradient-accent: linear-gradient(135deg, hsl(194 100% 60%), hsl(194 100% 70%));
+    --glass-bg: hsl(220 25% 8% / 0.6);
+    --glass-border: hsl(220 25% 15% / 0.5);
+    --neon-glow: 0 0 20px hsl(194 100% 60% / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +116,47 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--neon-glow);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  .neon-text {
+    @apply text-transparent bg-clip-text;
+    background: var(--gradient-accent);
+  }
+
+  .transform-button {
+    @apply relative overflow-hidden;
+    background: var(--gradient-accent);
+    transition: var(--transition-smooth);
+  }
+
+  .transform-button::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: linear-gradient(135deg, hsl(194 100% 70%), hsl(194 100% 80%));
+  }
+
+  .transform-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .transform-button:hover {
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
   }
 }
