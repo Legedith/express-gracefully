@@ -24,8 +24,9 @@ Rules:
 - Add brief professional framing when needed
 - Maximum 2-3 sentences
 - Sound optimistic and collaborative
+- Follow google and amazon level professionalism and values while transforming the message. 
 
-Return ONLY the transformed message, no explanations.`
+Return ONLY the transformed message, no explanations, no thig that says i'll help you or anything else, just the transformed message.`
           },
           {
             role: "user",
