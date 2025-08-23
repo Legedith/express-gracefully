@@ -4,11 +4,18 @@ on:
   push:
     branches: [ main, master ]
 
+# Ensure the workflow token has permission to push the built site
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -20,7 +27,8 @@ jobs:
 
       - name: Build
         env:
-          VITE_GH_PAGES_BASE: "/${{ github.repository }}"
+          # explicit base so the built assets use /express-gracefully/ paths
+          VITE_GH_PAGES_BASE: '/express-gracefully/'
         run: npm run build
 
       - name: Deploy
@@ -28,5 +36,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages
 
 
