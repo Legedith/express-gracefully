@@ -6,51 +6,51 @@
 
 @layer base {
   :root {
-    /* Futuristic Dark Theme */
-    --background: 220 25% 5%;
+    /* Futuristic Dark Theme - High Contrast */
+    --background: 220 15% 4%;
     --foreground: 210 40% 98%;
 
-    /* Glass Cards */
-    --card: 220 25% 8%;
+    /* Glass Cards - More Opaque */
+    --card: 220 20% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 25% 8%;
+    --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
     /* Neon Cyan Primary */
-    --primary: 194 100% 60%;
-    --primary-foreground: 220 25% 5%;
+    --primary: 194 100% 65%;
+    --primary-foreground: 220 15% 4%;
 
-    /* Secondary Glass */
-    --secondary: 220 25% 12%;
+    /* Secondary Glass - Higher Contrast */
+    --secondary: 220 20% 18%;
     --secondary-foreground: 210 40% 98%;
 
     /* Muted Glass */
-    --muted: 220 25% 10%;
-    --muted-foreground: 210 20% 65%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 210 30% 70%;
 
     /* Accent Neon */
-    --accent: 194 100% 60%;
-    --accent-foreground: 220 25% 5%;
+    --accent: 194 100% 65%;
+    --accent-foreground: 220 15% 4%;
 
     /* Destructive Red */
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    /* Glass Borders */
-    --border: 220 25% 15%;
-    --input: 220 25% 12%;
-    --ring: 194 100% 60%;
+    /* Glass Borders - More Visible */
+    --border: 220 25% 25%;
+    --input: 220 20% 18%;
+    --ring: 194 100% 65%;
 
     --radius: 0.75rem;
 
-    /* Custom Design Tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(220 25% 5%), hsl(220 30% 8%));
-    --gradient-card: linear-gradient(135deg, hsl(220 25% 8% / 0.6), hsl(220 25% 12% / 0.4));
-    --gradient-accent: linear-gradient(135deg, hsl(194 100% 60%), hsl(194 100% 70%));
-    --glass-bg: hsl(220 25% 8% / 0.6);
-    --glass-border: hsl(220 25% 15% / 0.5);
-    --neon-glow: 0 0 20px hsl(194 100% 60% / 0.3);
+    /* Custom Design Tokens - Enhanced Visibility */
+    --gradient-primary: linear-gradient(135deg, hsl(220 15% 4%), hsl(220 20% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(220 20% 12% / 0.9), hsl(220 20% 16% / 0.8));
+    --gradient-accent: linear-gradient(135deg, hsl(194 100% 65%), hsl(194 100% 75%));
+    --glass-bg: hsl(220 20% 12% / 0.9);
+    --glass-border: hsl(220 25% 25% / 0.8);
+    --neon-glow: 0 0 25px hsl(194 100% 65% / 0.4);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;

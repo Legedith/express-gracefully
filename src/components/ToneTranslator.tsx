@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Copy, Sparkles, ArrowRight, RotateCcw } from "lucide-react";
+import { Copy, Sparkles, ArrowRight, RotateCcw, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { transformTextWithGroq } from "@/services/groqService";
 
 const ToneTranslator = () => {
   const [angryText, setAngryText] = useState("");
@@ -38,29 +39,23 @@ const ToneTranslator = () => {
 
     setIsTransforming(true);
     
-    // Simulate AI transformation (in real app, this would call an AI API)
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Simple transformation logic for demo
-    let transformed = angryText
-      .replace(/this is bullshit/gi, "I have concerns about this approach")
-      .replace(/who the hell/gi, "I'd like to understand who")
-      .replace(/this is stupid/gi, "I believe we could explore alternative approaches")
-      .replace(/waste of time/gi, "may not be the most efficient use of our time")
-      .replace(/impossible/gi, "challenging and may require additional resources")
-      .replace(/hate/gi, "am not comfortable with")
-      .replace(/\?!/g, ".")
-      .replace(/!!/g, ".")
-      .replace(/damn/gi, "")
-      .replace(/wtf/gi, "I'm unclear about");
-
-    // Add professional framing
-    if (!transformed.includes("I'd like to") && !transformed.includes("I believe") && !transformed.includes("I'd appreciate")) {
-      transformed = `I'd like to discuss ${transformed.toLowerCase()}`;
+    try {
+      const transformed = await transformTextWithGroq(angryText);
+      setProfessionalText(transformed);
+      toast({
+        title: "✨ Transformed!",
+        description: "Your message has been professionally polished",
+      });
+    } catch (error) {
+      console.error("Transformation error:", error);
+      toast({
+        title: "Transformation failed",
+        description: "Unable to transform the message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsTransforming(false);
     }
-
-    setProfessionalText(transformed);
-    setIsTransforming(false);
   };
 
   const copyToClipboard = async () => {
@@ -98,6 +93,10 @@ const ToneTranslator = () => {
             Transform your frustrated thoughts into polished, professional communication 
             that you can share with confidence.
           </p>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">AI-Powered by Groq</span>
+          </div>
         </div>
 
         {/* Main Translator */}
