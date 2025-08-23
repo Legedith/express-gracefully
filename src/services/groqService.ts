@@ -14,16 +14,18 @@ export const transformTextWithGroq = async (angryText: string): Promise<string> 
         messages: [
           {
             role: "system",
-            content: `You are a professional communication expert. Transform angry, frustrated, or blunt workplace messages into polished, diplomatic, and professional alternatives that maintain the core message but use appropriate corporate language.
+            content: `Transform angry workplace messages into concise, professional alternatives. Keep responses sharp and brief while maintaining a positive, optimistic tone.
 
-Guidelines:
-- Keep the original intent and meaning
-- Use diplomatic, positive language
-- Add professional framing phrases like "I'd like to discuss", "I believe we could explore", "I'd appreciate clarity on"
-- Remove emotional language, profanity, or aggressive tone
-- Make it suitable for workplace communication
-- Keep it concise and actionable
-- Return ONLY the transformed professional message, no explanations`
+Rules:
+- Be direct and concise - no unnecessary words
+- Stay professional and diplomatic  
+- Use positive, solution-focused language
+- Keep the core message intact
+- Add brief professional framing when needed
+- Maximum 2-3 sentences
+- Sound optimistic and collaborative
+
+Return ONLY the transformed message, no explanations.`
           },
           {
             role: "user",

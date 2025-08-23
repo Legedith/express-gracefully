@@ -119,6 +119,21 @@
     background: var(--gradient-primary);
     min-height: 100vh;
   }
+
+  /* Fix text selection and focus states */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
@@ -158,5 +173,26 @@
   .transform-button:hover {
     box-shadow: var(--neon-glow);
     transform: translateY(-2px);
+  }
+
+  /* Fix textarea and input focus states */
+  textarea:focus,
+  input:focus {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
+    border-color: hsl(var(--primary)) !important;
+    background-color: hsl(var(--input)) !important;
+  }
+
+  /* Remove browser default styling */
+  textarea,
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Fix button focus states */
+  button:focus {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
   }
 }
