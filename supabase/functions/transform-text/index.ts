@@ -13,9 +13,13 @@ serve(async (req) => {
   }
 
   try {
+    console.log('Transform-text function called');
+    
     const { angryText } = await req.json();
+    console.log('Received angryText:', angryText);
     
     if (!angryText) {
+      console.log('No angryText provided');
       return new Response(
         JSON.stringify({ error: 'angryText is required' }),
         { 
@@ -37,6 +41,7 @@ serve(async (req) => {
       );
     }
 
+    console.log('Calling Groq API...');
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -85,8 +90,10 @@ Return ONLY the transformed message, no explanations, no thig that says i'll hel
     }
 
     const data = await response.json();
+    console.log('Groq API response received');
     const transformedText = data.choices[0]?.message?.content || "Unable to transform the message. Please try again.";
 
+    console.log('Returning transformed text');
     return new Response(
       JSON.stringify({ transformedText }),
       {
